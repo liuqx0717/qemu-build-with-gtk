@@ -9,8 +9,8 @@ interfere with the official QEMU packages.
 
 1. Download the source code of the qemu-kvm package:
    ```
-   dnf download --source qemu-kvm-core-10.1.0-5.el10
-   rpm -i qemu-kvm-10.1.0-5.el10.src.rpm   # Extract to ~/rpmbuild
+   dnf download --source qemu-kvm-core-10.1.0-6.el10
+   rpm -i qemu-kvm-10.1.0-6.el10.src.rpm   # Extract to ~/rpmbuild
    ```
 
 2. Install build dependencies:
@@ -43,8 +43,8 @@ interfere with the official QEMU packages.
    cd ~/rpmbuild/SOURCES
    tar -xJf qemu-10.1.0.tar.xz
    cd qemu-10.1.0
-   # Copy apply-patch.sh from this repo into current folder, then
-   ./apply-patch.sh
+   # Run apply-patch.sh of this repo (CWD is `qemu-10.1.0`)
+   /path/to/apply-patch.sh
    # Verify that the patches are applied cleanly
    find ./ -type f -name '*.rej'   # Shouldn't find any .rej files
    ```
@@ -54,8 +54,8 @@ interfere with the official QEMU packages.
    # CWD: ~/rpmbuild/SOURCES/qemu-10.1.0
    mkdir build
    cd build
-   # Copy qemu-configure.sh from this repo into current folder, then:
-   ./qemu-configure.sh
+   # Run qemu-configure.sh of this repo (CWD is `build`)
+   /path/to/qemu-configure.sh
    # Verify `GTK support` and `VirGL support` is `YES` in the output.
    make -j12
    make install    # Install into ~/.local/qemu

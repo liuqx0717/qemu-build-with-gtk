@@ -143,7 +143,7 @@ Obsoletes: %{name}-block-ssh <= %{epoch}:%{version}                    \
 Summary: QEMU is a machine emulator and virtualizer
 Name: qemu-kvm
 Version: 10.1.0
-Release: 5%{?rcrel}%{?dist}%{?cc_suffix}
+Release: 6%{?rcrel}%{?dist}%{?cc_suffix}
 # Epoch because we pushed a qemu-1.0 package. AIUI this can't ever be dropped
 # Epoch 15 used for RHEL 8
 # Epoch 17 used for RHEL 9 (due to release versioning offset in RHEL 8.5)
@@ -257,6 +257,14 @@ Patch50: kvm-qtest-bios-tables-test-Add-tests-for-legacy-smmuv3-a.patch
 # For RHEL-73800 - NVIDIA:Grace-Hopper:Backport support for user-creatable nested SMMUv3 - RHEL 10.1
 Patch51: kvm-qtest-bios-tables-test-Update-tables-for-smmuv3-test.patch
 Patch52: kvm-qtest-Do-not-run-bios-tables-test-on-aarch64.patch
+# For RHEL-126708 - [RHEL 10]snp guest fail to boot with hugepage
+Patch53: kvm-ram-block-attributes-fix-interaction-with-hugetlb-me.patch
+# For RHEL-126708 - [RHEL 10]snp guest fail to boot with hugepage
+Patch54: kvm-ram-block-attributes-Unify-the-retrieval-of-the-bloc.patch
+# For RHEL-128085 - VM crashes during boot when virtio device is attached through vfio_ccw
+Patch55: kvm-hw-s390x-Fix-a-possible-crash-with-passed-through-vi.patch
+# For RHEL-130704 - [rhel10] Fix the typo under vfio-pci device's enable-migration option 
+Patch56: kvm-Fix-the-typo-of-vfio-pci-device-s-enable-migration-o.patch
 
 %if %{have_clang}
 BuildRequires: clang
@@ -1336,6 +1344,18 @@ useradd -r -u 107 -g qemu -G kvm -d / -s /sbin/nologin \
 %endif
 
 %changelog
+* Tue Nov 25 2025 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-6
+- kvm-ram-block-attributes-fix-interaction-with-hugetlb-me.patch [RHEL-126708]
+- kvm-ram-block-attributes-Unify-the-retrieval-of-the-bloc.patch [RHEL-126708]
+- kvm-hw-s390x-Fix-a-possible-crash-with-passed-through-vi.patch [RHEL-128085]
+- kvm-Fix-the-typo-of-vfio-pci-device-s-enable-migration-o.patch [RHEL-130704]
+- Resolves: RHEL-126708
+  ([RHEL 10]snp guest fail to boot with hugepage)
+- Resolves: RHEL-128085
+  (VM crashes during boot when virtio device is attached through vfio_ccw)
+- Resolves: RHEL-130704
+  ([rhel10] Fix the typo under vfio-pci device's enable-migration option )
+
 * Fri Nov 14 2025 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-5
 - kvm-io-move-websock-resource-release-to-close-method.patch [RHEL-120116]
 - kvm-io-fix-use-after-free-in-websocket-handshake-code.patch [RHEL-120116]
