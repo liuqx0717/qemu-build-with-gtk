@@ -9,8 +9,8 @@ interfere with the official QEMU packages.
 
 1. Download the source code of the qemu-kvm package:
    ```
-   dnf download --source qemu-kvm-core-10.1.0-6.el10
-   rpm -i qemu-kvm-10.1.0-6.el10.src.rpm   # Extract to ~/rpmbuild
+   dnf download --source qemu-kvm-core-10.1.0-9.el10
+   rpm -i qemu-kvm-10.1.0-9.el10.src.rpm   # Extract to ~/rpmbuild
    ```
 
 2. Install build dependencies:
