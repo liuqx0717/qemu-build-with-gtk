@@ -92,6 +92,94 @@ PATCHLIST=$(grep '^ *Patch' <<'EOF'
     # For RHEL-73800 - NVIDIA:Grace-Hopper:Backport support for user-creatable nested SMMUv3 - RHEL 10.1
     Patch51: kvm-qtest-bios-tables-test-Update-tables-for-smmuv3-test.patch
     Patch52: kvm-qtest-Do-not-run-bios-tables-test-on-aarch64.patch
+    # For RHEL-126708 - [RHEL 10]snp guest fail to boot with hugepage
+    Patch53: kvm-ram-block-attributes-fix-interaction-with-hugetlb-me.patch
+    # For RHEL-126708 - [RHEL 10]snp guest fail to boot with hugepage
+    Patch54: kvm-ram-block-attributes-Unify-the-retrieval-of-the-bloc.patch
+    # For RHEL-128085 - VM crashes during boot when virtio device is attached through vfio_ccw
+    Patch55: kvm-hw-s390x-Fix-a-possible-crash-with-passed-through-vi.patch
+    # For RHEL-130704 - [rhel10] Fix the typo under vfio-pci device's enable-migration option 
+    Patch56: kvm-Fix-the-typo-of-vfio-pci-device-s-enable-migration-o.patch
+    # For RHEL-120115 - The vf nic created using the IGB emulated nic can not obtain ip address 
+    Patch57: kvm-pcie_sriov-Fix-broken-MMIO-accesses-from-SR-IOV-VFs.patch
+    # For RHEL-130478 - Migration from RHEL 10.2 to RHEL 10.1 with virt-rhel10.0.0 machine type fails on Grace
+    Patch58: kvm-arm-fix-oob-access-in-compat-handling.patch
+    # For RHEL-129540 - Assertion failure on drain with iothread and I/O load
+    Patch59: kvm-block-backend-Fix-race-when-resuming-queued-requests.patch
+    # For RHEL-121543 - The VM hit io error when do S3-PR integration on the pass-through  failover multipath device
+    Patch60: kvm-file-posix-Handle-suspended-dm-multipath-better-for-.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch61: kvm-accel-Add-Meson-and-config-support-for-MSHV-accelera.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch62: kvm-target-i386-emulate-Allow-instruction-decoding-from-.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch63: kvm-target-i386-mshv-Add-x86-decoder-emu-implementation.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch64: kvm-hw-intc-Generalize-APIC-helper-names-from-kvm_-to-ac.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch65: kvm-include-hw-hyperv-Add-MSHV-ABI-header-definitions.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch66: kvm-linux-headers-linux-Add-mshv.h-headers.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch67: kvm-accel-mshv-Add-accelerator-skeleton.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch68: kvm-accel-mshv-Register-memory-region-listeners.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch69: kvm-accel-mshv-Initialize-VM-partition.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch70: kvm-treewide-rename-qemu_wait_io_event-qemu_wait_io_even.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch71: kvm-accel-mshv-Add-vCPU-creation-and-execution-loop.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch72: kvm-accel-mshv-Add-vCPU-signal-handling.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch73: kvm-target-i386-mshv-Add-CPU-create-and-remove-logic.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch74: kvm-target-i386-mshv-Implement-mshv_store_regs.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch75: kvm-target-i386-mshv-Implement-mshv_get_standard_regs.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch76: kvm-target-i386-mshv-Implement-mshv_get_special_regs.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch77: kvm-target-i386-mshv-Implement-mshv_arch_put_registers.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch78: kvm-target-i386-mshv-Set-local-interrupt-controller-stat.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch79: kvm-target-i386-mshv-Register-CPUID-entries-with-MSHV.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch80: kvm-target-i386-mshv-Register-MSRs-with-MSHV.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch81: kvm-target-i386-mshv-Integrate-x86-instruction-decoder-e.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch82: kvm-target-i386-mshv-Write-MSRs-to-the-hypervisor.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch83: kvm-target-i386-mshv-Implement-mshv_vcpu_run.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch84: kvm-accel-mshv-Handle-overlapping-mem-mappings.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch85: kvm-qapi-accel-Allow-to-query-mshv-capabilities.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch86: kvm-target-i386-mshv-Use-preallocated-page-for-hvcall.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch87: kvm-docs-Add-mshv-to-documentation.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch88: kvm-MAINTAINERS-Add-maintainers-for-mshv-accelerator.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch89: kvm-accel-mshv-initialize-thread-name.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch90: kvm-accel-mshv-use-return-value-of-handle_pio_str_read.patch
+    # For RHEL-134212 - [RHEL10.2] L1VH qemu downstream initial merge RHEL10.2
+    Patch91: kvm-monitor-generalize-query-mshv-info-mshv-to-query-acc.patch
+    # For RHEL-110003 - Expose block limits of block nodes in QMP and qemu-img
+    Patch92: kvm-block-Improve-comments-in-BlockLimits.patch
+    # For RHEL-110003 - Expose block limits of block nodes in QMP and qemu-img
+    Patch93: kvm-block-Expose-block-limits-for-images-in-QMP.patch
+    # For RHEL-110003 - Expose block limits of block nodes in QMP and qemu-img
+    Patch94: kvm-qemu-img-info-Optionally-show-block-limits.patch
+    # For RHEL-110003 - Expose block limits of block nodes in QMP and qemu-img
+    Patch95: kvm-qemu-img-info-Add-cache-mode-option.patch
+    # For RHEL-111853 - [Intel 10.0 FEAT] [SPR] TDX: Virt-QEMU: QEMU Support [rhel-10]
+    Patch96: kvm-rh-configs-enable-CONFIG_TDX-for-x86_64.patch
 EOF
 )
 
