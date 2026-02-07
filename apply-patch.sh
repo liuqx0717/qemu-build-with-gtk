@@ -180,6 +180,16 @@ PATCHLIST=$(grep '^ *Patch' <<'EOF'
     Patch95: kvm-qemu-img-info-Add-cache-mode-option.patch
     # For RHEL-111853 - [Intel 10.0 FEAT] [SPR] TDX: Virt-QEMU: QEMU Support [rhel-10]
     Patch96: kvm-rh-configs-enable-CONFIG_TDX-for-x86_64.patch
+    # For RHEL-108142 - QEMU crashes when stopping source VM during live migration
+    Patch97: kvm-block-Fix-BDS-use-after-free-during-shutdown.patch
+    # For RHEL-126707 - [qemu, rhel-10] increase default TSEG size
+    Patch98: kvm-fix-pc_rhel_10_2_compat_len.patch
+    # For RHEL-126707 - [qemu, rhel-10] increase default TSEG size
+    Patch99: kvm-q35-increase-default-tseg-size.patch
+    # For RHEL-139028 - Intel IOMMU VM freezes: "call_irq_handler: 3.37 No irq handler for vector"[rhel-10.2]
+    Patch100: kvm-hw-intc-ioapic-Fix-ACCEL_KERNEL_GSI_IRQFD_POSSIBLE-t.patch
+    # For RHEL-111853 - [Intel 10.0 FEAT] [SPR] TDX: Virt-QEMU: QEMU Support [rhel-10]
+    Patch101: kvm-redhat-allow-5-level-paging-for-TDX-VMs.patch
 EOF
 )
 

@@ -143,7 +143,7 @@ Obsoletes: %{name}-block-ssh <= %{epoch}:%{version}                    \
 Summary: QEMU is a machine emulator and virtualizer
 Name: qemu-kvm
 Version: 10.1.0
-Release: 9%{?rcrel}%{?dist}%{?cc_suffix}
+Release: 11%{?rcrel}%{?dist}%{?cc_suffix}
 # Epoch because we pushed a qemu-1.0 package. AIUI this can't ever be dropped
 # Epoch 15 used for RHEL 8
 # Epoch 17 used for RHEL 9 (due to release versioning offset in RHEL 8.5)
@@ -345,6 +345,16 @@ Patch94: kvm-qemu-img-info-Optionally-show-block-limits.patch
 Patch95: kvm-qemu-img-info-Add-cache-mode-option.patch
 # For RHEL-111853 - [Intel 10.0 FEAT] [SPR] TDX: Virt-QEMU: QEMU Support [rhel-10]
 Patch96: kvm-rh-configs-enable-CONFIG_TDX-for-x86_64.patch
+# For RHEL-108142 - QEMU crashes when stopping source VM during live migration
+Patch97: kvm-block-Fix-BDS-use-after-free-during-shutdown.patch
+# For RHEL-126707 - [qemu, rhel-10] increase default TSEG size
+Patch98: kvm-fix-pc_rhel_10_2_compat_len.patch
+# For RHEL-126707 - [qemu, rhel-10] increase default TSEG size
+Patch99: kvm-q35-increase-default-tseg-size.patch
+# For RHEL-139028 - Intel IOMMU VM freezes: "call_irq_handler: 3.37 No irq handler for vector"[rhel-10.2]
+Patch100: kvm-hw-intc-ioapic-Fix-ACCEL_KERNEL_GSI_IRQFD_POSSIBLE-t.patch
+# For RHEL-111853 - [Intel 10.0 FEAT] [SPR] TDX: Virt-QEMU: QEMU Support [rhel-10]
+Patch101: kvm-redhat-allow-5-level-paging-for-TDX-VMs.patch
 
 %if %{have_clang}
 BuildRequires: clang
@@ -1424,6 +1434,23 @@ useradd -r -u 107 -g qemu -G kvm -d / -s /sbin/nologin \
 %endif
 
 %changelog
+* Tue Jan 13 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-11
+- kvm-fix-pc_rhel_10_2_compat_len.patch [RHEL-126707]
+- kvm-q35-increase-default-tseg-size.patch [RHEL-126707]
+- kvm-hw-intc-ioapic-Fix-ACCEL_KERNEL_GSI_IRQFD_POSSIBLE-t.patch [RHEL-139028]
+- kvm-redhat-allow-5-level-paging-for-TDX-VMs.patch [RHEL-111853]
+- Resolves: RHEL-126707
+  ([qemu, rhel-10] increase default TSEG size)
+- Resolves: RHEL-139028
+  (Intel IOMMU VM freezes: "call_irq_handler: 3.37 No irq handler for vector"[rhel-10.2])
+- Resolves: RHEL-111853
+  ([Intel 10.0 FEAT] [SPR] TDX: Virt-QEMU: QEMU Support [rhel-10])
+
+* Mon Jan 05 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-10
+- kvm-block-Fix-BDS-use-after-free-during-shutdown.patch [RHEL-108142]
+- Resolves: RHEL-108142
+  (QEMU crashes when stopping source VM during live migration)
+
 * Mon Dec 15 2025 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-9
 - kvm-monitor-generalize-query-mshv-info-mshv-to-query-acc.patch [RHEL-134212]
 - kvm-block-Improve-comments-in-BlockLimits.patch [RHEL-110003]
