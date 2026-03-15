@@ -143,7 +143,7 @@ Obsoletes: %{name}-block-ssh <= %{epoch}:%{version}                    \
 Summary: QEMU is a machine emulator and virtualizer
 Name: qemu-kvm
 Version: 10.1.0
-Release: 11%{?rcrel}%{?dist}%{?cc_suffix}
+Release: 13%{?rcrel}%{?dist}%{?cc_suffix}
 # Epoch because we pushed a qemu-1.0 package. AIUI this can't ever be dropped
 # Epoch 15 used for RHEL 8
 # Epoch 17 used for RHEL 9 (due to release versioning offset in RHEL 8.5)
@@ -355,6 +355,59 @@ Patch99: kvm-q35-increase-default-tseg-size.patch
 Patch100: kvm-hw-intc-ioapic-Fix-ACCEL_KERNEL_GSI_IRQFD_POSSIBLE-t.patch
 # For RHEL-111853 - [Intel 10.0 FEAT] [SPR] TDX: Virt-QEMU: QEMU Support [rhel-10]
 Patch101: kvm-redhat-allow-5-level-paging-for-TDX-VMs.patch
+# For RHEL-79118 - [network-storage][rbd][core-dump]installation of guest failed sometimes with multiqueue enabled [rhel10]
+Patch102: kvm-rbd-Run-co-BH-CB-in-the-coroutine-s-AioContext.patch
+# For RHEL-79118 - [network-storage][rbd][core-dump]installation of guest failed sometimes with multiqueue enabled [rhel10]
+Patch103: kvm-curl-Fix-coroutine-waking.patch
+# For RHEL-79118 - [network-storage][rbd][core-dump]installation of guest failed sometimes with multiqueue enabled [rhel10]
+Patch104: kvm-block-io-Take-reqs_lock-for-tracked_requests.patch
+# For RHEL-79118 - [network-storage][rbd][core-dump]installation of guest failed sometimes with multiqueue enabled [rhel10]
+Patch105: kvm-qcow2-Re-initialize-lock-in-invalidate_cache.patch
+# For RHEL-79118 - [network-storage][rbd][core-dump]installation of guest failed sometimes with multiqueue enabled [rhel10]
+Patch106: kvm-qcow2-Fix-cache_clean_timer.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch107: kvm-net-bundle-all-offloads-in-a-single-struct.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch108: kvm-linux-headers-deal-with-counted_by-annotation.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch109: kvm-linux-headers-Update-to-Linux-v6.17-rc1.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch110: kvm-virtio-introduce-extended-features-type.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch111: kvm-virtio-serialize-extended-features-state.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch112: kvm-virtio-add-support-for-negotiating-extended-features.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch113: kvm-virtio-pci-implement-support-for-extended-features.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch114: kvm-vhost-add-support-for-negotiating-extended-features.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch115: kvm-qmp-update-virtio-features-map-to-support-extended-f.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch116: kvm-vhost-backend-implement-extended-features-support.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch117: kvm-vhost-net-implement-extended-features-support.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch118: kvm-virtio-net-implement-extended-features-support.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch119: kvm-net-implement-tunnel-probing.patch
+# For RHEL-143785 - backport support for GSO over UDP tunnel offload
+Patch120: kvm-net-implement-UDP-tunnel-features-offloading.patch
+# For RHEL-147425 - virtiofs: processes become stuck in request_wait_answer on virtiofs mounts
+Patch121: kvm-vhost-user-make-vhost_set_vring_file-synchronous.patch
+# For RHEL-132749 - Migrate SCSI PR state and preempt reservation upon live migration
+Patch122: kvm-scsi-generalize-scsi_SG_IO_FROM_DEV-to-scsi_SG_IO.patch
+# For RHEL-132749 - Migrate SCSI PR state and preempt reservation upon live migration
+Patch123: kvm-scsi-add-error-reporting-to-scsi_SG_IO.patch
+# For RHEL-132749 - Migrate SCSI PR state and preempt reservation upon live migration
+Patch124: kvm-scsi-track-SCSI-reservation-state-for-live-migration.patch
+# For RHEL-132749 - Migrate SCSI PR state and preempt reservation upon live migration
+Patch125: kvm-scsi-save-load-SCSI-reservation-state.patch
+# For RHEL-132749 - Migrate SCSI PR state and preempt reservation upon live migration
+Patch126: kvm-docs-add-SCSI-migrate-pr-documentation.patch
+# For RHEL-134989 - Hotplugged interface device can not be shown in the guest
+# For RHEL-146584 - [RHEL-10.2][ARM]: Unable to Check the mem prefetched size on Guest
+Patch127: kvm-Revert-hw-arm-virt-Use-ACPI-PCI-hotplug-by-default-f.patch
 
 %if %{have_clang}
 BuildRequires: clang
@@ -1434,6 +1487,48 @@ useradd -r -u 107 -g qemu -G kvm -d / -s /sbin/nologin \
 %endif
 
 %changelog
+* Thu Feb 19 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-13
+- kvm-vhost-user-make-vhost_set_vring_file-synchronous.patch [RHEL-147425]
+- kvm-scsi-generalize-scsi_SG_IO_FROM_DEV-to-scsi_SG_IO.patch [RHEL-132749]
+- kvm-scsi-add-error-reporting-to-scsi_SG_IO.patch [RHEL-132749]
+- kvm-scsi-track-SCSI-reservation-state-for-live-migration.patch [RHEL-132749]
+- kvm-scsi-save-load-SCSI-reservation-state.patch [RHEL-132749]
+- kvm-docs-add-SCSI-migrate-pr-documentation.patch [RHEL-132749]
+- kvm-Revert-hw-arm-virt-Use-ACPI-PCI-hotplug-by-default-f.patch [RHEL-134989 RHEL-146584]
+- Resolves: RHEL-147425
+  (virtiofs: processes become stuck in request_wait_answer on virtiofs mounts)
+- Resolves: RHEL-132749
+  (Migrate SCSI PR state and preempt reservation upon live migration)
+- Resolves: RHEL-134989
+  (Hotplugged interface device can not be shown in the guest)
+- Resolves: RHEL-146584
+  ([RHEL-10.2][ARM]: Unable to Check the mem prefetched size on Guest)
+
+* Mon Feb 02 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-12
+- kvm-rbd-Run-co-BH-CB-in-the-coroutine-s-AioContext.patch [RHEL-79118]
+- kvm-curl-Fix-coroutine-waking.patch [RHEL-79118]
+- kvm-block-io-Take-reqs_lock-for-tracked_requests.patch [RHEL-79118]
+- kvm-qcow2-Re-initialize-lock-in-invalidate_cache.patch [RHEL-79118]
+- kvm-qcow2-Fix-cache_clean_timer.patch [RHEL-79118]
+- kvm-net-bundle-all-offloads-in-a-single-struct.patch [RHEL-143785]
+- kvm-linux-headers-deal-with-counted_by-annotation.patch [RHEL-143785]
+- kvm-linux-headers-Update-to-Linux-v6.17-rc1.patch [RHEL-143785]
+- kvm-virtio-introduce-extended-features-type.patch [RHEL-143785]
+- kvm-virtio-serialize-extended-features-state.patch [RHEL-143785]
+- kvm-virtio-add-support-for-negotiating-extended-features.patch [RHEL-143785]
+- kvm-virtio-pci-implement-support-for-extended-features.patch [RHEL-143785]
+- kvm-vhost-add-support-for-negotiating-extended-features.patch [RHEL-143785]
+- kvm-qmp-update-virtio-features-map-to-support-extended-f.patch [RHEL-143785]
+- kvm-vhost-backend-implement-extended-features-support.patch [RHEL-143785]
+- kvm-vhost-net-implement-extended-features-support.patch [RHEL-143785]
+- kvm-virtio-net-implement-extended-features-support.patch [RHEL-143785]
+- kvm-net-implement-tunnel-probing.patch [RHEL-143785]
+- kvm-net-implement-UDP-tunnel-features-offloading.patch [RHEL-143785]
+- Resolves: RHEL-79118
+  ([network-storage][rbd][core-dump]installation of guest failed sometimes with multiqueue enabled [rhel10])
+- Resolves: RHEL-143785
+  (backport support for GSO over UDP tunnel offload)
+
 * Tue Jan 13 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-11
 - kvm-fix-pc_rhel_10_2_compat_len.patch [RHEL-126707]
 - kvm-q35-increase-default-tseg-size.patch [RHEL-126707]

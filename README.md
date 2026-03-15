@@ -9,8 +9,8 @@ interfere with the official QEMU packages.
 
 1. Download the source code of the qemu-kvm package:
    ```
-   dnf download --source qemu-kvm-core-10.1.0-11.el10
-   rpm -i qemu-kvm-10.1.0-11.el10.src.rpm   # Extract to ~/rpmbuild
+   dnf download --source qemu-kvm-core-10.1.0-13.el10
+   rpm -i qemu-kvm-10.1.0-13.el10.src.rpm   # Extract to ~/rpmbuild
    ```
 
 2. Install build dependencies:
@@ -27,7 +27,7 @@ interfere with the official QEMU packages.
    sudo dnf install mesa-libEGL-devel mesa-libgbm-devel libepoxy-devel libdrm-devel
    # git clone the repository, then cd into it.
    cd virglrenderer
-   git checkout 1.2.0
+   git checkout 1.3.0
 
    # Build a static library for simplicity.
    meson setup build --prefix=~/.local/virglrenderer --default-library=static -Dplatforms=egl
