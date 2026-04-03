@@ -143,7 +143,7 @@ Obsoletes: %{name}-block-ssh <= %{epoch}:%{version}                    \
 Summary: QEMU is a machine emulator and virtualizer
 Name: qemu-kvm
 Version: 10.1.0
-Release: 13%{?rcrel}%{?dist}%{?cc_suffix}
+Release: 14%{?rcrel}%{?dist}%{?cc_suffix}
 # Epoch because we pushed a qemu-1.0 package. AIUI this can't ever be dropped
 # Epoch 15 used for RHEL 8
 # Epoch 17 used for RHEL 9 (due to release versioning offset in RHEL 8.5)
@@ -408,6 +408,10 @@ Patch126: kvm-docs-add-SCSI-migrate-pr-documentation.patch
 # For RHEL-134989 - Hotplugged interface device can not be shown in the guest
 # For RHEL-146584 - [RHEL-10.2][ARM]: Unable to Check the mem prefetched size on Guest
 Patch127: kvm-Revert-hw-arm-virt-Use-ACPI-PCI-hotplug-by-default-f.patch
+# For RHEL-153058 - Qemu crashes with "double free" during restore --reset-nvram with uefi-vars secure boot
+Patch128: kvm-hw-uefi-add-variable-digest-to-vmstate.patch
+# For RHEL-144004 - [rhel-10] Regression in BLOCK_IO_ERROR event delivery with (w|r)error setting of 'stop' or 'enospc' due to event rate limiting
+Patch129: kvm-block-Never-drop-BLOCK_IO_ERROR-with-action-stop-for.patch
 
 %if %{have_clang}
 BuildRequires: clang
@@ -1487,6 +1491,14 @@ useradd -r -u 107 -g qemu -G kvm -d / -s /sbin/nologin \
 %endif
 
 %changelog
+* Wed Mar 18 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-14
+- kvm-hw-uefi-add-variable-digest-to-vmstate.patch [RHEL-153058]
+- kvm-block-Never-drop-BLOCK_IO_ERROR-with-action-stop-for.patch [RHEL-144004]
+- Resolves: RHEL-153058
+  (Qemu crashes with "double free" during restore --reset-nvram with uefi-vars secure boot)
+- Resolves: RHEL-144004
+  ([rhel-10] Regression in BLOCK_IO_ERROR event delivery with (w|r)error setting of 'stop' or 'enospc' due to event rate limiting)
+
 * Thu Feb 19 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-13
 - kvm-vhost-user-make-vhost_set_vring_file-synchronous.patch [RHEL-147425]
 - kvm-scsi-generalize-scsi_SG_IO_FROM_DEV-to-scsi_SG_IO.patch [RHEL-132749]
