@@ -247,6 +247,16 @@ PATCHLIST=$(grep '^ *Patch' <<'EOF'
     Patch128: kvm-hw-uefi-add-variable-digest-to-vmstate.patch
     # For RHEL-144004 - [rhel-10] Regression in BLOCK_IO_ERROR event delivery with (w|r)error setting of 'stop' or 'enospc' due to event rate limiting
     Patch129: kvm-block-Never-drop-BLOCK_IO_ERROR-with-action-stop-for.patch
+    # For RHEL-155601 - Mirror job can miss writes during startup, corrupting the copy [rhel-10.2]
+    Patch130: kvm-mirror-Fix-missed-dirty-bitmap-writes-during-startup.patch
+    # For RHEL-158224 - qemu-kvm: disk writes of fewer bytes than requested is a retry condition, not necessarily an indication of ENOSPC [rhel-10.2]
+    Patch131: kvm-linux-aio-Put-all-parameters-into-qemu_laiocb.patch
+    # For RHEL-158224 - qemu-kvm: disk writes of fewer bytes than requested is a retry condition, not necessarily an indication of ENOSPC [rhel-10.2]
+    Patch132: kvm-linux-aio-Resubmit-tails-of-short-reads-writes.patch
+    # For RHEL-158224 - qemu-kvm: disk writes of fewer bytes than requested is a retry condition, not necessarily an indication of ENOSPC [rhel-10.2]
+    Patch133: kvm-block-io_uring-avoid-potentially-getting-stuck-after.patch
+    # For RHEL-158224 - qemu-kvm: disk writes of fewer bytes than requested is a retry condition, not necessarily an indication of ENOSPC [rhel-10.2]
+    Patch134: kvm-io-uring-Resubmit-tails-of-short-writes.patch
 EOF
 )
 
