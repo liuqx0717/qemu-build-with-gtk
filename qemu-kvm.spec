@@ -143,7 +143,7 @@ Obsoletes: %{name}-block-ssh <= %{epoch}:%{version}                    \
 Summary: QEMU is a machine emulator and virtualizer
 Name: qemu-kvm
 Version: 10.1.0
-Release: 16%{?rcrel}%{?dist}%{?cc_suffix}
+Release: 18%{?rcrel}%{?dist}%{?cc_suffix}
 # Epoch because we pushed a qemu-1.0 package. AIUI this can't ever be dropped
 # Epoch 15 used for RHEL 8
 # Epoch 17 used for RHEL 9 (due to release versioning offset in RHEL 8.5)
@@ -422,6 +422,28 @@ Patch132: kvm-linux-aio-Resubmit-tails-of-short-reads-writes.patch
 Patch133: kvm-block-io_uring-avoid-potentially-getting-stuck-after.patch
 # For RHEL-158224 - qemu-kvm: disk writes of fewer bytes than requested is a retry condition, not necessarily an indication of ENOSPC [rhel-10.2]
 Patch134: kvm-io-uring-Resubmit-tails-of-short-writes.patch
+# For RHEL-114231 - Add stats-intervals support to --blockdev
+Patch135: kvm-block-enable-stats-intervals-for-storage-devices.patch
+# For RHEL-114231 - Add stats-intervals support to --blockdev
+Patch136: kvm-qdev-Free-property-array-on-release.patch
+# For RHEL-158212 - qemu-kvm doesn't retry SG-IO on 05/25/00 (ILLEGAL REQUEST / LOGICAL UNIT NOT SUPPORTED) [rhel-10.3]
+Patch137: kvm-scsi-Don-t-consider-LOGICAL-UNIT-NOT-SUPPORTED-guest.patch
+# For RHEL-112608 - [ARM64] Windows 11 VM should install without TPM Bypass
+Patch138: kvm-hw-tpm-Factor-tpm_ppi_enabled-out.patch
+# For RHEL-112608 - [ARM64] Windows 11 VM should install without TPM Bypass
+Patch139: kvm-hw-tpm-Add-TPMIfClass-ppi_enabled-field.patch
+# For RHEL-112608 - [ARM64] Windows 11 VM should install without TPM Bypass
+Patch140: kvm-hw-tpm-Remove-CRBState-ppi_enabled-field.patch
+# For RHEL-112608 - [ARM64] Windows 11 VM should install without TPM Bypass
+Patch141: kvm-hw-tpm-Propagate-ppi_enabled-to-tpm_tis_reset-and-re.patch
+# For RHEL-112608 - [ARM64] Windows 11 VM should install without TPM Bypass
+Patch142: kvm-hw-tpm-Simplify-tpm_ppi_enabled.patch
+# For RHEL-112608 - [ARM64] Windows 11 VM should install without TPM Bypass
+Patch143: kvm-docs-specs-tpm-document-PPI-support-on-ARM64-virt.patch
+# For RHEL-112608 - [ARM64] Windows 11 VM should install without TPM Bypass
+Patch144: kvm-hw-acpi-tpm-parameterize-PPI-base-address-in-tpm_bui.patch
+# For RHEL-112608 - [ARM64] Windows 11 VM should install without TPM Bypass
+Patch145: kvm-hw-tpm-add-PPI-support-to-tpm-tis-device-for-ARM64-v.patch
 
 %if %{have_clang}
 BuildRequires: clang
@@ -1501,6 +1523,27 @@ useradd -r -u 107 -g qemu -G kvm -d / -s /sbin/nologin \
 %endif
 
 %changelog
+* Mon May 11 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-18
+- kvm-scsi-Don-t-consider-LOGICAL-UNIT-NOT-SUPPORTED-guest.patch [RHEL-158212]
+- kvm-hw-tpm-Factor-tpm_ppi_enabled-out.patch [RHEL-112608]
+- kvm-hw-tpm-Add-TPMIfClass-ppi_enabled-field.patch [RHEL-112608]
+- kvm-hw-tpm-Remove-CRBState-ppi_enabled-field.patch [RHEL-112608]
+- kvm-hw-tpm-Propagate-ppi_enabled-to-tpm_tis_reset-and-re.patch [RHEL-112608]
+- kvm-hw-tpm-Simplify-tpm_ppi_enabled.patch [RHEL-112608]
+- kvm-docs-specs-tpm-document-PPI-support-on-ARM64-virt.patch [RHEL-112608]
+- kvm-hw-acpi-tpm-parameterize-PPI-base-address-in-tpm_bui.patch [RHEL-112608]
+- kvm-hw-tpm-add-PPI-support-to-tpm-tis-device-for-ARM64-v.patch [RHEL-112608]
+- Resolves: RHEL-158212
+  (qemu-kvm doesn't retry SG-IO on 05/25/00 (ILLEGAL REQUEST / LOGICAL UNIT NOT SUPPORTED) [rhel-10.3])
+- Resolves: RHEL-112608
+  ([ARM64] Windows 11 VM should install without TPM Bypass)
+
+* Tue Apr 21 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-17
+- kvm-block-enable-stats-intervals-for-storage-devices.patch [RHEL-114231]
+- kvm-qdev-Free-property-array-on-release.patch [RHEL-114231]
+- Resolves: RHEL-114231
+  (Add stats-intervals support to --blockdev)
+
 * Mon Mar 30 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-16
 - kvm-linux-aio-Put-all-parameters-into-qemu_laiocb.patch [RHEL-158224]
 - kvm-linux-aio-Resubmit-tails-of-short-reads-writes.patch [RHEL-158224]
