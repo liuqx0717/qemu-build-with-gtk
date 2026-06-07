@@ -279,6 +279,238 @@ PATCHLIST=$(grep '^ *Patch' <<'EOF'
     Patch144: kvm-hw-acpi-tpm-parameterize-PPI-base-address-in-tpm_bui.patch
     # For RHEL-112608 - [ARM64] Windows 11 VM should install without TPM Bypass
     Patch145: kvm-hw-tpm-add-PPI-support-to-tpm-tis-device-for-ARM64-v.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch146: kvm-vmstate-Introduce-VMSTATE_VARRAY_INT32_ALLOC.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch147: kvm-target-arm-Move-compare_u64-to-helper.c.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch148: kvm-target-arm-Convert-init_cpreg_list-to-g_hash_table_f.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch149: kvm-target-arm-machine-Use-VMSTATE_VARRAY_INT32_ALLOC-fo.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch150: kvm-target-arm-kvm-Export-kvm_print_register_name.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch151: kvm-target-arm-kvm-Tweak-print_register_name-for-arm64-s.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch152: kvm-target-arm-machine-Trace-cpreg-names-which-do-not-ma.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch153: kvm-target-arm-machine-Trace-all-register-mismatches.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch154: kvm-target-arm-machine-Fix-detection-of-unknown-incoming.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch155: kvm-target-arm-cpu-Introduce-the-infrastructure-for-cpre.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch156: kvm-target-arm-machine-Handle-ToleranceNotOnBothEnds-mig.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch157: kvm-target-arm-machine-Handle-ToleranceOnlySrcTestValue-.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch158: kvm-target-arm-cpu64-Mitigate-migration-failures-due-to-.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch159: kvm-target-arm-cpu64-Define-cpreg-migration-tolerance-fo.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch160: kvm-target-arm-helper-Define-cpreg-migration-tolerance-f.patch
+    # For RHEL-174858 - [rhel10] Backport qemu cross-kernel migration mitigation series
+    Patch161: kvm-Revert-target-arm-Reinstate-bogus-AArch32-DBGDTRTX-r.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch162: kvm-hw-pci-host-gpex-acpi-Fix-_DSM-function-0-support-re.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch163: kvm-vfio-scsi-ui-Error-check-qio_channel_socket_connect_.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch164: kvm-vfio-igd-Enable-quirks-when-IGD-is-not-the-primary-d.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch165: kvm-vfio-Remove-vfio-amd-xgbe-device.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch166: kvm-vfio-Remove-vfio-calxeda-xgmac-device.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch167: kvm-hw-arm-virt-Include-system-system.h.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch168: kvm-vfio-Remove-vfio-platform.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch169: kvm-vfio-Move-vfio-region.h-under-hw-vfio.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch170: kvm-vfio-container-set-error-on-cpr-failure.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch171: kvm-vfio-Report-an-error-when-the-dma_max_mappings-limit.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch172: kvm-hw-vfio-user-add-x-pci-class-code.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch173: kvm-vfio-Introduce-helper-vfio_pci_from_vfio_device.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch174: kvm-vfio-vfio-container-base.h-update-VFIOContainerBase-.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch175: kvm-vfio-vfio-container.h-update-VFIOContainer-declarati.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch176: kvm-hw-vfio-cpr-legacy.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch177: kvm-hw-vfio-container.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch178: kvm-vfio-spapr.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch179: kvm-vfio-vfio-container.h-rename-VFIOContainer-bcontaine.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch180: kvm-vfio-user-container.h-update-VFIOUserContainer-decla.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch181: kvm-vfio-container.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch182: kvm-vfio-user-container.h-rename-VFIOUserContainer-bcont.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch183: kvm-vfio-user-pci.c-update-VFIOUserPCIDevice-declaration.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch184: kvm-vfio-user-pci.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch185: kvm-vfio-user-pci.c-rename-VFIOUserPCIDevice-device-fiel.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch186: kvm-vfio-pci.h-update-VFIOPCIDevice-declaration.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch187: kvm-vfio-pci.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch188: kvm-vfio-pci-quirks.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch189: kvm-vfio-cpr.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch190: kvm-vfio-igd.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch191: kvm-vfio-user-pci.c-use-QOM-casts-where-appropriate2.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch192: kvm-vfio-pci.h-rename-VFIOPCIDevice-pdev-field-to-parent.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch193: kvm-treewide-handle-result-of-qio_channel_set_blocking.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch194: kvm-vfio-pci-Do-not-unparent-in-instance_finalize.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch195: kvm-vfio-Do-not-unparent-in-instance_finalize.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch196: kvm-include-hw-vfio-vfio-container.h-rename-VFIOContaine.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch197: kvm-include-hw-vfio-vfio-container-base.h-rename-VFIOCon.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch198: kvm-include-hw-vfio-vfio-container.h-rename-file-to-vfio.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch199: kvm-include-hw-vfio-vfio-container-base.h-rename-file-to.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch200: kvm-hw-vfio-container.c-rename-file-to-container-legacy..patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch201: kvm-hw-vfio-container-base.c-rename-file-to-container.c.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch202: kvm-vfio-iommufd.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch203: kvm-vfio-cpr-iommufd.c-use-QOM-casts-where-appropriate.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch204: kvm-vfio-vfio-iommufd.h-rename-VFIOContainer-bcontainer-.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch205: kvm-vfio-spapr.c-use-QOM-casts-where-appropriate2.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch206: kvm-vfio-spapr.c-rename-VFIOContainer-bcontainer-field-t.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch207: kvm-vfio-pci.c-rename-vfio_instance_init-to-vfio_pci_ini.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch208: kvm-vfio-pci.c-rename-vfio_instance_finalize-to-vfio_pci.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch209: kvm-vfio-pci.c-rename-vfio_pci_dev_class_init-to-vfio_pc.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch210: kvm-vfio-pci.c-rename-vfio_pci_dev_info-to-vfio_pci_info.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch211: kvm-s390x-s390-pci-vfio.c-use-QOM-casts-where-appropriat.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch212: kvm-hw-vfio-types.h-rename-TYPE_VFIO_PCI_BASE-to-TYPE_VF.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch213: kvm-vfio-pci.c-rename-vfio_pci_base_dev_class_init-to-vf.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch214: kvm-vfio-pci.c-rename-vfio_pci_base_dev_info-to-vfio_pci.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch215: kvm-vfio-pci.c-rename-vfio_pci_dev_properties-to-vfio_pc.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch216: kvm-vfio-pci.c-rename-vfio_pci_dev_nohotplug_properties-.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch217: kvm-vfio-pci.c-rename-vfio_pci_nohotplug_dev_class_init-.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch218: kvm-vfio-pci.c-rename-vfio_pci_nohotplug_dev_info-to-vfi.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch219: kvm-vfio-user-pci.c-rename-vfio_user_pci_dev_class_init-.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch220: kvm-vfio-user-pci.c-rename-vfio_user_pci_dev_properties-.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch221: kvm-vfio-user-pci.c-rename-vfio_user_instance_init-to-vf.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch222: kvm-vfio-user-pci.c-rename-vfio_user_instance_finalize-t.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch223: kvm-vfio-user-pci.c-rename-vfio_user_pci_dev_info-to-vfi.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch224: kvm-include-hw-vfio-vfio-device.h-fix-include-header-gua.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch225: kvm-vfio-Remove-workaround-for-kernel-DMA-unmap-overflow.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch226: kvm-system-iommufd-Use-uint64_t-type-for-IOVA-mapping-si.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch227: kvm-hw-vfio-Reorder-vfio_container_query_dirty_bitmap-tr.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch228: kvm-hw-vfio-Avoid-ram_addr_t-in-vfio_container_query_dir.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch229: kvm-hw-vfio-Use-uint64_t-for-IOVA-mapping-size-in-vfio_c.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch230: kvm-migration-push-Error-errp-into-vmstate_subsection_lo.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch231: kvm-migration-push-Error-errp-into-vmstate_load_state.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch232: kvm-migration-Remove-error-variant-of-vmstate_save_state.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch233: kvm-migration-multi-mode-notifier.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch234: kvm-migration-add-cpr_walk_fd.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch235: kvm-oslib-qemu_clear_cloexec.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch236: kvm-migration-cpr-exec-command-parameter.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch237: kvm-migration-cpr-exec-save-and-load.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch238: kvm-migration-cpr-exec-mode.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch239: kvm-migration-cpr-exec-docs.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch240: kvm-vfio-cpr-exec-mode.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch241: kvm-hw-vfio-listener-Include-missing-exec-target_page.h-.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch242: kvm-hw-Remove-unnecessary-system-ram_addr.h-header.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch243: kvm-vfio-container-Remap-only-populated-parts-in-a-secti.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch244: kvm-vfio-cpr-legacy-drop-an-erroneous-assert.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch245: kvm-vfio-iommufd-Set-cpr.ioas_id-on-source-side-for-CPR-.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch246: kvm-vfio-iommufd-Restore-vbasedev-s-reference-to-hwpt-af.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch247: kvm-vfio-container-Support-unmap-all-in-one-ioctl.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch248: kvm-vfio-iommufd-Support-unmap-all-in-one-ioctl.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch249: kvm-vfio-listener-Add-an-assertion-for-unmap_all.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch250: kvm-vfio-Clean-up-includes.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch251: kvm-migration-set-correct-list-pointer-when-removing-not.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch252: kvm-vfio-user-simplify-vfio_user_process.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch253: kvm-vfio-user-clarify-partial-message-handling.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch254: kvm-vfio-user-refactor-out-header-handling.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch255: kvm-vfio-user-simplify-vfio_user_recv_one.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch256: kvm-vfio-user-recycle-msg-on-failure.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch257: kvm-include-hw-hyperv-Remove-unused-struct-mshv_vp_regis.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch258: kvm-linux-headers-Update-to-Linux-v6.18-rc3.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch259: kvm-linux-headers-Update-to-Linux-v6.19-rc1.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch260: kvm-hw-vfio-Add-helper-to-retrieve-device-feature.patch
+    # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
+    Patch261: kvm-hw-vfio-region-Create-dmabuf-for-PCI-BAR-per-region.patch
 EOF
 )
 
