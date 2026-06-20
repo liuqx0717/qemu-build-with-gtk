@@ -143,7 +143,7 @@ Obsoletes: %{name}-block-ssh <= %{epoch}:%{version}                    \
 Summary: QEMU is a machine emulator and virtualizer
 Name: qemu-kvm
 Version: 10.1.0
-Release: 19%{?rcrel}%{?dist}%{?cc_suffix}
+Release: 20%{?rcrel}%{?dist}%{?cc_suffix}
 # Epoch because we pushed a qemu-1.0 package. AIUI this can't ever be dropped
 # Epoch 15 used for RHEL 8
 # Epoch 17 used for RHEL 9 (due to release versioning offset in RHEL 8.5)
@@ -676,6 +676,24 @@ Patch259: kvm-linux-headers-Update-to-Linux-v6.19-rc1.patch
 Patch260: kvm-hw-vfio-Add-helper-to-retrieve-device-feature.patch
 # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
 Patch261: kvm-hw-vfio-region-Create-dmabuf-for-PCI-BAR-per-region.patch
+# For RHEL-178767 - MSHV backport onto QEMU 10.1.0 is not able to launch MSHV guests
+Patch262: kvm-accel-mshv-Remove-remap-overlapping-mappings-code.patch
+# For RHEL-178767 - MSHV backport onto QEMU 10.1.0 is not able to launch MSHV guests
+Patch263: kvm-accel-mshv-implement-cpu_thread_is_idle-hook.patch
+# For RHEL-155807 - live migration failed the VM just register key only [rhel-10.3]
+Patch264: kvm-scsi-adjust-error_prepend-formatting.patch
+# For RHEL-155807 - live migration failed the VM just register key only [rhel-10.3]
+Patch265: kvm-scsi-always-send-valid-PREEMPT-TYPE-field.patch
+# For RHEL-155807 - live migration failed the VM just register key only [rhel-10.3]
+Patch266: kvm-scsi-register-again-after-PREEMPT-without-reservatio.patch
+# For RHEL-178846 - [aarch64] qemu-kvm crashes on --device tpm-tis-device,?
+Patch267: kvm-hw-tpm-tpm_tis_sysbus-defer-resource-allocation-to-r.patch
+# For RHEL-180750 - Backport in QEMU : vfio/container: Restrict dma_map_file() to shared RAM or RAM devices
+Patch268: kvm-vfio-container-Restrict-dma_map_file-to-shared-RAM-o.patch
+# For RHEL-153123 - live migration failed or get failed WSFC test result during WSFC testing [rhel-10.3]
+Patch269: kvm-scsi-change-buf_size-to-unsigned-int-in-scsi_SG_IO.patch
+# For RHEL-153123 - live migration failed or get failed WSFC test result during WSFC testing [rhel-10.3]
+Patch270: kvm-scsi-handle-reservation-changes-across-migration.patch
 
 %if %{have_clang}
 BuildRequires: clang
@@ -1755,6 +1773,27 @@ useradd -r -u 107 -g qemu -G kvm -d / -s /sbin/nologin \
 %endif
 
 %changelog
+* Mon Jun 08 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-20
+- kvm-accel-mshv-Remove-remap-overlapping-mappings-code.patch [RHEL-178767]
+- kvm-accel-mshv-implement-cpu_thread_is_idle-hook.patch [RHEL-178767]
+- kvm-scsi-adjust-error_prepend-formatting.patch [RHEL-155807]
+- kvm-scsi-always-send-valid-PREEMPT-TYPE-field.patch [RHEL-155807]
+- kvm-scsi-register-again-after-PREEMPT-without-reservatio.patch [RHEL-155807]
+- kvm-hw-tpm-tpm_tis_sysbus-defer-resource-allocation-to-r.patch [RHEL-178846]
+- kvm-vfio-container-Restrict-dma_map_file-to-shared-RAM-o.patch [RHEL-180750]
+- kvm-scsi-change-buf_size-to-unsigned-int-in-scsi_SG_IO.patch [RHEL-153123]
+- kvm-scsi-handle-reservation-changes-across-migration.patch [RHEL-153123]
+- Resolves: RHEL-178767
+  (MSHV backport onto QEMU 10.1.0 is not able to launch MSHV guests)
+- Resolves: RHEL-155807
+  (live migration failed the VM just register key only [rhel-10.3])
+- Resolves: RHEL-178846
+  ([aarch64] qemu-kvm crashes on --device tpm-tis-device,?)
+- Resolves: RHEL-180750
+  (Backport in QEMU : vfio/container: Restrict dma_map_file() to shared RAM or RAM devices)
+- Resolves: RHEL-153123
+  (live migration failed or get failed WSFC test result during WSFC testing [rhel-10.3])
+
 * Tue May 26 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-19
 - kvm-vmstate-Introduce-VMSTATE_VARRAY_INT32_ALLOC.patch [RHEL-174858]
 - kvm-target-arm-Move-compare_u64-to-helper.c.patch [RHEL-174858]

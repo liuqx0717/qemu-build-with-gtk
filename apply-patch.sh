@@ -511,6 +511,24 @@ PATCHLIST=$(grep '^ *Patch' <<'EOF'
     Patch260: kvm-hw-vfio-Add-helper-to-retrieve-device-feature.patch
     # For RHEL-138494 - NVIDIA:Grace-Hopper:Backport vfio: Add DMABUF support for PCI BAR regions - RHEL 10.3
     Patch261: kvm-hw-vfio-region-Create-dmabuf-for-PCI-BAR-per-region.patch
+    # For RHEL-178767 - MSHV backport onto QEMU 10.1.0 is not able to launch MSHV guests
+    Patch262: kvm-accel-mshv-Remove-remap-overlapping-mappings-code.patch
+    # For RHEL-178767 - MSHV backport onto QEMU 10.1.0 is not able to launch MSHV guests
+    Patch263: kvm-accel-mshv-implement-cpu_thread_is_idle-hook.patch
+    # For RHEL-155807 - live migration failed the VM just register key only [rhel-10.3]
+    Patch264: kvm-scsi-adjust-error_prepend-formatting.patch
+    # For RHEL-155807 - live migration failed the VM just register key only [rhel-10.3]
+    Patch265: kvm-scsi-always-send-valid-PREEMPT-TYPE-field.patch
+    # For RHEL-155807 - live migration failed the VM just register key only [rhel-10.3]
+    Patch266: kvm-scsi-register-again-after-PREEMPT-without-reservatio.patch
+    # For RHEL-178846 - [aarch64] qemu-kvm crashes on --device tpm-tis-device,?
+    Patch267: kvm-hw-tpm-tpm_tis_sysbus-defer-resource-allocation-to-r.patch
+    # For RHEL-180750 - Backport in QEMU : vfio/container: Restrict dma_map_file() to shared RAM or RAM devices
+    Patch268: kvm-vfio-container-Restrict-dma_map_file-to-shared-RAM-o.patch
+    # For RHEL-153123 - live migration failed or get failed WSFC test result during WSFC testing [rhel-10.3]
+    Patch269: kvm-scsi-change-buf_size-to-unsigned-int-in-scsi_SG_IO.patch
+    # For RHEL-153123 - live migration failed or get failed WSFC test result during WSFC testing [rhel-10.3]
+    Patch270: kvm-scsi-handle-reservation-changes-across-migration.patch
 EOF
 )
 
