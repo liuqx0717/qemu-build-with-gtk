@@ -1418,6 +1418,66 @@ PATCHLIST=$(grep '^ *Patch' <<'EOF'
     # For RHEL-73796 - NVIDIA:Grace-Hopper:Backport vEVENTQ support for smmuv3 - RHEL 10.1
     # For RHEL-73798 - NVIDIA:Grace-Hopper:Backport CMDQV support - RHEL 10.1
     Patch437: kvm-rh-aarch64-rh-devices.mak-Add-CONFIG_TEGRA241_CMDQV.patch
+    # For RHEL-113894 - [RHEL.10.2][virual network] Hit qemu coredump when removed an interface that the guest is using from the host
+    Patch438: kvm-net-tap-linux.c-avoid-abort-when-setting-invalid-fd.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch439: kvm-crypto-only-verify-CA-certs-in-chain-of-trust.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch440: kvm-crypto-remove-extraneous-pointer-usage-in-gnutls-cer.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch441: kvm-crypto-fix-error-reporting-in-cert-chain-checks.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch442: kvm-crypto-allow-client-server-cert-chains.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch443: kvm-crypto-stop-requiring-key-encipherment-usage-in-x509.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch444: kvm-crypto-switch-to-newer-gnutls-API-for-distinguished-.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch445: kvm-crypto-remove-redundant-parameter-checking-CA-certs.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch446: kvm-crypto-add-missing-free-of-certs-array.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch447: kvm-crypto-replace-stat-with-access-for-credential-check.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch448: kvm-crypto-remove-redundant-access-checks-before-loading.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch449: kvm-crypto-move-check-for-TLS-creds-dir-property.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch450: kvm-crypto-use-g_autofree-when-loading-x509-credentials.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch451: kvm-crypto-remove-needless-indirection-via-parent_obj-fi.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch452: kvm-crypto-move-release-of-DH-parameters-into-TLS-creds-.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch453: kvm-crypto-shorten-the-endpoint-server-check-in-TLS-cred.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch454: kvm-crypto-remove-duplication-loading-x509-CA-cert.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch455: kvm-crypto-reduce-duplication-in-handling-TLS-priority-s.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch456: kvm-crypto-introduce-method-for-reloading-TLS-creds.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch457: kvm-crypto-introduce-a-wrapper-around-gnutls-credentials.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch458: kvm-crypto-fix-lifecycle-handling-of-gnutls-credentials-.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch459: kvm-crypto-make-TLS-credentials-structs-private.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch460: kvm-crypto-deprecate-use-of-external-dh-params.pem-file.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch461: kvm-crypto-avoid-loading-the-CA-certs-twice.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch462: kvm-crypto-avoid-loading-the-identity-certs-twice.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch463: kvm-crypto-expand-logic-to-cope-with-multiple-certificat.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch464: kvm-crypto-support-upto-5-parallel-certificate-identitie.patch
+    # For RHEL-111934 - QEMU support for loading multiple sets of x509 certs for PQC hybrid mode
+    Patch465: kvm-docs-creation-of-x509-certs-compliant-with-post-quan.patch
+    # For RHEL-184675 - NVIDIA:Backport vfio/pci: add vfio-pci ATS control property - RHEL 10.3
+    Patch466: kvm-iommufd-Introduce-handler-for-device-ATS-support.patch
+    # For RHEL-184675 - NVIDIA:Backport vfio/pci: add vfio-pci ATS control property - RHEL 10.3
+    Patch467: kvm-vfio-pci-Add-ats-property.patch
 EOF
 )
 
