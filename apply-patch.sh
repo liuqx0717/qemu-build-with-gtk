@@ -1478,6 +1478,32 @@ PATCHLIST=$(grep '^ *Patch' <<'EOF'
     Patch466: kvm-iommufd-Introduce-handler-for-device-ATS-support.patch
     # For RHEL-184675 - NVIDIA:Backport vfio/pci: add vfio-pci ATS control property - RHEL 10.3
     Patch467: kvm-vfio-pci-Add-ats-property.patch
+    # For RHEL-180837 - [aarch64] Live migration of TPM-equipped guests fails: Unknown ramblock "tpm-ppi" (qemu-kvm-10.1.0-19.el10 → older builds)
+    Patch468: kvm-hw-core-platform-bus-guard-platform_bus_get_mmio_add.patch
+    # For RHEL-180837 - [aarch64] Live migration of TPM-equipped guests fails: Unknown ramblock "tpm-ppi" (qemu-kvm-10.1.0-19.el10 → older builds)
+    Patch469: kvm-hw-tpm-gate-PPI-support-on-tpm-tis-device-behind-a-d.patch
+    # For RHEL-180837 - [aarch64] Live migration of TPM-equipped guests fails: Unknown ramblock "tpm-ppi" (qemu-kvm-10.1.0-19.el10 → older builds)
+    Patch470: kvm-hw-tpm-default-tpm-tis-device-PPI-to-disabled.patch
+    # For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+    Patch471: kvm-s390x-css-limit-number-of-CHPIDs-in-description.patch
+    # For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+    Patch472: kvm-s390x-ioinst-Require-strict-length-and-format-for-SE.patch
+    # For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+    Patch473: kvm-s390x-pci-Shrink-RPCIT-ranges-to-registered-window.patch
+    # For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+    Patch474: kvm-s390x-pci-Tighten-region-detection-for-BAR-read-writ.patch
+    # For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+    Patch475: kvm-s390x-sclp-reject-invalid-write-event-data-headers.patch
+    # For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+    Patch476: kvm-s390x-kvm-clamp-stsi-3.2.2-size.patch
+    # For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+    Patch477: kvm-s390x-sclp-prevent-re-reading-the-sclp-header.patch
+    # For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+    Patch478: kvm-s390x-sclpcpi-check-event-length-field-before-readin.patch
+    # For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+    Patch479: kvm-s390x-css-firm-up-handling-of-chained-TIC-CCWs.patch
+    # For RHEL-224652 - Backport  vfio/region: Clarify dma-buf failure messages 
+    Patch480: kvm-vfio-region-Clarify-dma-buf-failure-messages.patch
 EOF
 )
 

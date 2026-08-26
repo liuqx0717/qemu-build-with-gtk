@@ -143,7 +143,7 @@ Obsoletes: %{name}-block-ssh <= %{epoch}:%{version}                    \
 Summary: QEMU is a machine emulator and virtualizer
 Name: qemu-kvm
 Version: 10.1.0
-Release: 24%{?rcrel}%{?dist}%{?cc_suffix}
+Release: 26%{?rcrel}%{?dist}%{?cc_suffix}
 # Epoch because we pushed a qemu-1.0 package. AIUI this can't ever be dropped
 # Epoch 15 used for RHEL 8
 # Epoch 17 used for RHEL 9 (due to release versioning offset in RHEL 8.5)
@@ -1648,6 +1648,32 @@ Patch465: kvm-docs-creation-of-x509-certs-compliant-with-post-quan.patch
 Patch466: kvm-iommufd-Introduce-handler-for-device-ATS-support.patch
 # For RHEL-184675 - NVIDIA:Backport vfio/pci: add vfio-pci ATS control property - RHEL 10.3
 Patch467: kvm-vfio-pci-Add-ats-property.patch
+# For RHEL-180837 - [aarch64] Live migration of TPM-equipped guests fails: Unknown ramblock "tpm-ppi" (qemu-kvm-10.1.0-19.el10 → older builds)
+Patch468: kvm-hw-core-platform-bus-guard-platform_bus_get_mmio_add.patch
+# For RHEL-180837 - [aarch64] Live migration of TPM-equipped guests fails: Unknown ramblock "tpm-ppi" (qemu-kvm-10.1.0-19.el10 → older builds)
+Patch469: kvm-hw-tpm-gate-PPI-support-on-tpm-tis-device-behind-a-d.patch
+# For RHEL-180837 - [aarch64] Live migration of TPM-equipped guests fails: Unknown ramblock "tpm-ppi" (qemu-kvm-10.1.0-19.el10 → older builds)
+Patch470: kvm-hw-tpm-default-tpm-tis-device-PPI-to-disabled.patch
+# For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+Patch471: kvm-s390x-css-limit-number-of-CHPIDs-in-description.patch
+# For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+Patch472: kvm-s390x-ioinst-Require-strict-length-and-format-for-SE.patch
+# For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+Patch473: kvm-s390x-pci-Shrink-RPCIT-ranges-to-registered-window.patch
+# For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+Patch474: kvm-s390x-pci-Tighten-region-detection-for-BAR-read-writ.patch
+# For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+Patch475: kvm-s390x-sclp-reject-invalid-write-event-data-headers.patch
+# For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+Patch476: kvm-s390x-kvm-clamp-stsi-3.2.2-size.patch
+# For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+Patch477: kvm-s390x-sclp-prevent-re-reading-the-sclp-header.patch
+# For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+Patch478: kvm-s390x-sclpcpi-check-event-length-field-before-readin.patch
+# For RHEL-192791 - RHEL10.0 - qemu s390x: interface harding fixes
+Patch479: kvm-s390x-css-firm-up-handling-of-chained-TIC-CCWs.patch
+# For RHEL-224652 - Backport  vfio/region: Clarify dma-buf failure messages 
+Patch480: kvm-vfio-region-Clarify-dma-buf-failure-messages.patch
 
 %if %{have_clang}
 BuildRequires: clang
@@ -2730,6 +2756,29 @@ useradd -r -u 107 -g qemu -G kvm -d / -s /sbin/nologin \
 %endif
 
 %changelog
+* Tue Aug 11 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-26
+- kvm-vfio-region-Clarify-dma-buf-failure-messages.patch [RHEL-224652]
+- Resolves: RHEL-224652
+  (Backport  vfio/region: Clarify dma-buf failure messages )
+
+* Mon Aug 03 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-25
+- kvm-hw-core-platform-bus-guard-platform_bus_get_mmio_add.patch [RHEL-180837]
+- kvm-hw-tpm-gate-PPI-support-on-tpm-tis-device-behind-a-d.patch [RHEL-180837]
+- kvm-hw-tpm-default-tpm-tis-device-PPI-to-disabled.patch [RHEL-180837]
+- kvm-s390x-css-limit-number-of-CHPIDs-in-description.patch [RHEL-192791]
+- kvm-s390x-ioinst-Require-strict-length-and-format-for-SE.patch [RHEL-192791]
+- kvm-s390x-pci-Shrink-RPCIT-ranges-to-registered-window.patch [RHEL-192791]
+- kvm-s390x-pci-Tighten-region-detection-for-BAR-read-writ.patch [RHEL-192791]
+- kvm-s390x-sclp-reject-invalid-write-event-data-headers.patch [RHEL-192791]
+- kvm-s390x-kvm-clamp-stsi-3.2.2-size.patch [RHEL-192791]
+- kvm-s390x-sclp-prevent-re-reading-the-sclp-header.patch [RHEL-192791]
+- kvm-s390x-sclpcpi-check-event-length-field-before-readin.patch [RHEL-192791]
+- kvm-s390x-css-firm-up-handling-of-chained-TIC-CCWs.patch [RHEL-192791]
+- Resolves: RHEL-180837
+  ([aarch64] Live migration of TPM-equipped guests fails: Unknown ramblock "tpm-ppi" (qemu-kvm-10.1.0-19.el10 → older builds))
+- Resolves: RHEL-192791
+  (RHEL10.0 - qemu s390x: interface harding fixes)
+
 * Fri Jul 10 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-24
 - kvm-net-tap-linux.c-avoid-abort-when-setting-invalid-fd.patch [RHEL-113894]
 - kvm-crypto-only-verify-CA-certs-in-chain-of-trust.patch [RHEL-111934]
