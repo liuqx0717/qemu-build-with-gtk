@@ -143,7 +143,7 @@ Obsoletes: %{name}-block-ssh <= %{epoch}:%{version}                    \
 Summary: QEMU is a machine emulator and virtualizer
 Name: qemu-kvm
 Version: 10.1.0
-Release: 26%{?rcrel}%{?dist}%{?cc_suffix}
+Release: 28%{?rcrel}%{?dist}%{?cc_suffix}
 # Epoch because we pushed a qemu-1.0 package. AIUI this can't ever be dropped
 # Epoch 15 used for RHEL 8
 # Epoch 17 used for RHEL 9 (due to release versioning offset in RHEL 8.5)
@@ -1674,6 +1674,14 @@ Patch478: kvm-s390x-sclpcpi-check-event-length-field-before-readin.patch
 Patch479: kvm-s390x-css-firm-up-handling-of-chained-TIC-CCWs.patch
 # For RHEL-224652 - Backport  vfio/region: Clarify dma-buf failure messages 
 Patch480: kvm-vfio-region-Clarify-dma-buf-failure-messages.patch
+# For RHEL-151317 - RHEL10 - KVM full Boot order support -- Guest is crashing for the invalid boot device(<boot order='1'/> -- add-on qcow2 file)
+Patch481: kvm-pc-bios-s390-ccw-Always-reset-virtio-device-on-faile.patch
+# For RHEL-246035 - [RHEL10.3] Exhausted DMA bounce buffer on building cuda-samples in VM
+Patch482: kvm-system-memory-Use-memmove-for-directly-accessible-re.patch
+# For RHEL-246035 - [RHEL10.3] Exhausted DMA bounce buffer on building cuda-samples in VM
+Patch483: kvm-system-memory-Use-qemu_ram_move-for-directly-accessi.patch
+# For RHEL-246035 - [RHEL10.3] Exhausted DMA bounce buffer on building cuda-samples in VM
+Patch484: kvm-system-memory-Make-ram-device-region-directly-access.patch
 
 %if %{have_clang}
 BuildRequires: clang
@@ -2756,6 +2764,18 @@ useradd -r -u 107 -g qemu -G kvm -d / -s /sbin/nologin \
 %endif
 
 %changelog
+* Mon Aug 24 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-28
+- kvm-system-memory-Use-memmove-for-directly-accessible-re.patch [RHEL-246035]
+- kvm-system-memory-Use-qemu_ram_move-for-directly-accessi.patch [RHEL-246035]
+- kvm-system-memory-Make-ram-device-region-directly-access.patch [RHEL-246035]
+- Resolves: RHEL-246035
+  ([RHEL10.3] Exhausted DMA bounce buffer on building cuda-samples in VM)
+
+* Thu Aug 20 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-27
+- kvm-pc-bios-s390-ccw-Always-reset-virtio-device-on-faile.patch [RHEL-151317]
+- Resolves: RHEL-151317
+  (RHEL10 - KVM full Boot order support -- Guest is crashing for the invalid boot device(<boot order='1'/> -- add-on qcow2 file))
+
 * Tue Aug 11 2026 Miroslav Rezanina <mrezanin@redhat.com> - 10.1.0-26
 - kvm-vfio-region-Clarify-dma-buf-failure-messages.patch [RHEL-224652]
 - Resolves: RHEL-224652

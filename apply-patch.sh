@@ -1504,6 +1504,14 @@ PATCHLIST=$(grep '^ *Patch' <<'EOF'
     Patch479: kvm-s390x-css-firm-up-handling-of-chained-TIC-CCWs.patch
     # For RHEL-224652 - Backport  vfio/region: Clarify dma-buf failure messages 
     Patch480: kvm-vfio-region-Clarify-dma-buf-failure-messages.patch
+    # For RHEL-151317 - RHEL10 - KVM full Boot order support -- Guest is crashing for the invalid boot device(<boot order='1'/> -- add-on qcow2 file)
+    Patch481: kvm-pc-bios-s390-ccw-Always-reset-virtio-device-on-faile.patch
+    # For RHEL-246035 - [RHEL10.3] Exhausted DMA bounce buffer on building cuda-samples in VM
+    Patch482: kvm-system-memory-Use-memmove-for-directly-accessible-re.patch
+    # For RHEL-246035 - [RHEL10.3] Exhausted DMA bounce buffer on building cuda-samples in VM
+    Patch483: kvm-system-memory-Use-qemu_ram_move-for-directly-accessi.patch
+    # For RHEL-246035 - [RHEL10.3] Exhausted DMA bounce buffer on building cuda-samples in VM
+    Patch484: kvm-system-memory-Make-ram-device-region-directly-access.patch
 EOF
 )
 
